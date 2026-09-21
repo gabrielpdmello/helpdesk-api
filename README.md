@@ -7,10 +7,15 @@ API back-end de um sistema de HelpDesk.
 
 ## Rotas atualmente implementadas
 
-| Método | URI         | Descrição                    |
-| ------ | ----------- | ---------------------------- |
-| GET    | /categorias | Retorna todas as categorias. |
-| GET    | /tecnicos   | Retorna todos os técnicos.   |
+| Método | URI               | Descrição                         |
+| ------ | ----------------- | --------------------------------- |
+| GET    | /categorias       | Retorna todas as categorias.      |
+| GET    | /tecnicos         | Retorna todos os técnicos.        |
+| GET    | /solicitantes     | Retorna todos os solicitantes.    |
+| GET    | /solicitantes/:id | Retorna solicitante por id.       |
+| POST   | /solicitantes     | Cadastra novo solicitante.        |
+| PUT    | /solicitantes/:id | Atualiza cadastro de solicitante. |
+| DELETE | /solicitantes/:id | Exclui cadastro de solicitante.   |
 
 ## Rodar API localmente
 1. Clone esse repositório e entre nele

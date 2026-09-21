@@ -1,0 +1,49 @@
+@baseURL = http://localhost:3000
+@id = 4
+
+### Listar todos os solicitantes
+GET {{baseURL}}/solicitantes
+Accept: application/json
+
+### Buscar solicitante por id
+GET {{baseURL}}/solicitantes/{{id}}
+Accept: application/json
+
+### Criar solicitante
+POST {{baseURL}}/solicitantes
+Accept: application/json
+content-type: application/json
+
+{
+    "nome": "Eduarda Martins",
+    "email": "eduarda.martins@empresa.com",
+    "setor": "Comercial"
+}
+
+### Atualizar solicitante
+PUT {{baseURL}}/solicitantes/{{id}}
+Accept: application/json
+content-type: application/json
+
+{
+    "nome": "Juliana Costa",
+    "email": "juliana.costa@empresa.com",
+    "setor": "Financeiro"
+}
+
+### Atualizar solicitante não existente
+PUT {{baseURL}}/solicitantes/100
+Accept: application/json
+content-type: application/json
+
+{
+    "nome": "Eduarda Martins",
+    "email": "eduarda5.martins@empresa.com",
+    "setor": "Comercial"
+}
+
+### Deletar solicitante 
+DELETE {{baseURL}}/solicitantes/{{id}}
+
+### Deletar solicitante não existente
+DELETE {{baseURL}}/solicitantes/100
