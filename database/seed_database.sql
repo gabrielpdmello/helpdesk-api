@@ -11,3 +11,9 @@ INSERT INTO tecnicos (name, email) VALUES
 ('Mariana Costa', 'mariana.costa@empresa.com'),
 ('Pedro Almeida', 'pedro.almeida@empresa.com'),
 ('Camila Santos', 'camila.santos@empresa.com');
+
+INSERT INTO solicitantes (name, email, setor) VALUES
+('Gabriel Silva', 'gabriel.silva@empresa.com', 'Financeiro'),
+('Mariana Souza', 'mariana.souza@empresa.com', 'Recursos Humanos'),
+('Carlos Oliveira', 'carlos.oliveira@empresa.com', 'TI'),
+('Juliana Costa', 'juliana.costa@empresa.com', 'Comercial');
