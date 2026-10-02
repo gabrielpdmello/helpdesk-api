@@ -18,17 +18,35 @@ class RequesterService {
   }
 
   static async createRequester(nome, email, setor) {
-    const requester = await RequesterModel.create(nome, email, setor);
-    return requester;
+    try {
+      const requester = await RequesterModel.create(nome, email, setor);
+      return requester;
+    } catch (err) {
+      if (err.code === "ER_DUP_ENTRY") {
+        const error = new Error("Este email já está cadastrado.");
+        error.status = 409;
+        throw error;
+      }
+      throw err;
+    }
   }
 
   static async updateRequester(id, nome, email, setor) {
-    const row = await RequesterModel.updateById(id, nome, email, setor);
+    try {
+      const row = await RequesterModel.updateById(id, nome, email, setor);
 
-    if (row.affectedRows === 0) {
-      const error = new Error("Solicitante não encontrado.");
-      error.status = 404;
-      throw error;
+      if (row.affectedRows === 0) {
+        const error = new Error("Solicitante não encontrado.");
+        error.status = 404;
+        throw error;
+      }
+    } catch (err) {
+      if (err.code === "ER_DUP_ENTRY") {
+        const error = new Error("Este email já está cadastrado.");
+        error.status = 409;
+        throw error;
+      }
+      throw err;
     }
   }
 

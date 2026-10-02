@@ -1,10 +1,10 @@
 function errorMiddleware(err, req, res, next) {
   console.error("[ERRO]:", err.stack);
-  const statusCode = err.statusCode || 500;
+  const status = err.status || 500;
 
-  res.status(statusCode).json({
+  res.status(status).json({
     error: err.message || "Erro interno no servidor",
-    status: statusCode,
+    status: status,
   });
 }
 module.exports = errorMiddleware;

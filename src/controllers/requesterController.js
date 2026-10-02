@@ -2,12 +2,8 @@ const RequesterService = require("../services/requesterService");
 
 class RequesterController {
   static async getAll(req, res) {
-    try {
-      const requesters = await RequesterService.getAllRequesters();
-      return res.status(200).json(requesters);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+    const requesters = await RequesterService.getAllRequesters();
+    return res.status(200).json(requesters);
   }
 
   static async getById(req, res) {
@@ -19,12 +15,8 @@ class RequesterController {
         .json({ message: "Id deve ser um número.", id: req.params.id });
     }
 
-    try {
-      const requester = await RequesterService.getRequesterById(id);
-      return res.status(200).json(requester);
-    } catch (error) {
-      return res.status(error.status || 500).json({ error: error.message });
-    }
+    const requester = await RequesterService.getRequesterById(id);
+    return res.status(200).json(requester);
   }
 
   static async post(req, res) {
@@ -36,22 +28,12 @@ class RequesterController {
         .json({ message: "nome, email e setor são obrigatórios." });
     }
 
-    try {
-      const requester = await RequesterService.createRequester(
-        nome,
-        email,
-        setor,
-      );
-      return res.status(200).json(requester);
-    } catch (error) {
-      if (error.code === "ER_DUP_ENTRY") {
-        return res.status(409).json({
-          message: "Este email já está cadastrado.",
-          email: email,
-        });
-      }
-      return res.status(error.status || 500).json({ error: error.message });
-    }
+    const requester = await RequesterService.createRequester(
+      nome,
+      email,
+      setor,
+    );
+    return res.status(200).json(requester);
   }
 
   static async put(req, res) {
@@ -70,18 +52,8 @@ class RequesterController {
         .json({ message: "nome, email e setor são obrigatórios." });
     }
 
-    try {
-      await RequesterService.updateRequester(id, nome, email, setor);
-      return res.sendStatus(200);
-    } catch (error) {
-      if (error.code === "ER_DUP_ENTRY") {
-        return res.status(409).json({
-          message: "Este email já está cadastrado.",
-          email: email,
-        });
-      }
-      return res.status(error.status || 500).json({ error: error.message });
-    }
+    await RequesterService.updateRequester(id, nome, email, setor);
+    return res.sendStatus(200);
   }
 
   static async delete(req, res) {
@@ -93,12 +65,8 @@ class RequesterController {
         .json({ message: "Id deve ser um número.", id: req.params.id });
     }
 
-    try {
-      await RequesterService.deleteRequester(id);
-      return res.sendStatus(204);
-    } catch (error) {
-      return res.status(error.status || 500).json({ error: error.message });
-    }
+    await RequesterService.deleteRequester(id);
+    return res.sendStatus(204);
   }
 }
 
