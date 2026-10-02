@@ -9,6 +9,14 @@ Accept: application/json
 GET {{baseURL}}/solicitantes/{{id}}
 Accept: application/json
 
+### Buscar solicitante por id inválido
+GET {{baseURL}}/solicitantes/nan
+Accept: application/json
+
+### Buscar solicitante por id inexistente
+GET {{baseURL}}/solicitantes/100
+Accept: application/json
+
 ### Criar solicitante
 POST {{baseURL}}/solicitantes
 Accept: application/json
@@ -20,6 +28,11 @@ content-type: application/json
     "setor": "Comercial"
 }
 
+### Criar solicitante sem dados do solicitante
+POST {{baseURL}}/solicitantes
+Accept: application/json
+content-type: application/json
+
 ### Atualizar solicitante
 PUT {{baseURL}}/solicitantes/{{id}}
 Accept: application/json
@@ -30,6 +43,22 @@ content-type: application/json
     "email": "juliana.costa@empresa.com",
     "setor": "Financeiro"
 }
+
+### Atualizar solicitante com id inválido
+PUT {{baseURL}}/solicitantes/nan
+Accept: application/json
+content-type: application/json
+
+{
+    "nome": "Juliana Costa",
+    "email": "juliana.costa@empresa.com",
+    "setor": "Financeiro"
+}
+
+### Atualizar solicitante sem fornecer dados
+PUT {{baseURL}}/solicitantes/{{id}}
+Accept: application/json
+content-type: application/json
 
 ### Atualizar solicitante não existente
 PUT {{baseURL}}/solicitantes/100
@@ -44,6 +73,9 @@ content-type: application/json
 
 ### Deletar solicitante 
 DELETE {{baseURL}}/solicitantes/{{id}}
+
+### Deletar solicitante com id inválido
+DELETE {{baseURL}}/solicitantes/nan
 
 ### Deletar solicitante não existente
 DELETE {{baseURL}}/solicitantes/100
