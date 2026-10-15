@@ -16,6 +16,9 @@ API back-end de um sistema de HelpDesk.
 | POST   | /solicitantes     | Cadastra novo solicitante.        |
 | PUT    | /solicitantes/:id | Atualiza cadastro de solicitante. |
 | DELETE | /solicitantes/:id | Exclui cadastro de solicitante.   |
+| GET    | /chamados         | Retorna todos os chamados.        |
+| GET    | /chamados/:id     | Retorna chamado por id.           |
+| POST   | /chamados         | Cria novo chamado.                |
 
 ## Rodar API localmente
 1. Clone esse repositório e entre nele

@@ -1,0 +1,44 @@
+@baseURL = http://localhost:3000
+
+### Listar todas os chamados
+GET {{baseURL}}/chamados
+Accept: application/json
+
+### Criar chamado
+POST {{baseURL}}/chamados
+Accept: application/json
+content-type: application/json
+
+{
+  "titulo": "Monitor com tela piscando",
+  "descricao": "O monitor apresenta oscilações na imagem durante o uso.",
+  "prioridade": "ALTA",
+  "solicitanteId": 4,
+  "categoriaId": 1
+}
+
+### Criar chamado sem dados
+POST {{baseURL}}/chamados
+Accept: application/json
+content-type: application/json
+
+### Criar chamado com dados inválidos
+POST {{baseURL}}/chamados
+Accept: application/json
+content-type: application/json
+
+{
+  "titulo": "Monitor com tela piscando",
+  "descricao": "O monitor apresenta oscilações na imagem durante o uso.",
+  "prioridade": "ALTA",
+  "solicitanteId": "nan",
+  "categoriaId": "nan"
+}
+
+### Buscar chamado por id
+GET {{baseURL}}/chamados/1
+Accept: application/json
+
+### Buscar chamado com id inválido
+GET {{baseURL}}/chamados/nan
+Accept: application/json

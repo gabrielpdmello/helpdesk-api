@@ -52,8 +52,8 @@ class RequesterController {
         .json({ message: "nome, email e setor são obrigatórios." });
     }
 
-    await RequesterService.updateRequester(id, nome, email, setor);
-    return res.sendStatus(200);
+    const requester = await RequesterService.updateRequester(id, nome, email, setor);
+    return res.status(200).json({message: "Cadastro atualizado!", solicitante: requester});
   }
 
   static async delete(req, res) {
@@ -66,7 +66,7 @@ class RequesterController {
     }
 
     await RequesterService.deleteRequester(id);
-    return res.sendStatus(204);
+    return res.status(200).json({message: "Cadastro de solicitante deletado."});
   }
 }
 

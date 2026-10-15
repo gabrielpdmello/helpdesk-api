@@ -28,7 +28,7 @@ class RequesterModel {
   }
 
   static async updateById(id, nome, email, setor) {
-    const [row] = await db.query(
+    await db.query(
       `UPDATE solicitantes SET
       nome = ?,
       email = ?,
@@ -37,7 +37,11 @@ class RequesterModel {
       [nome, email, setor, id],
     );
 
-    return row;
+    const [row] = await db.query(`
+      SELECT * FROM solicitantes WHERE id = ?
+      `, [id])
+
+    return row[0];
   }
 
   static async deleteById(id) {

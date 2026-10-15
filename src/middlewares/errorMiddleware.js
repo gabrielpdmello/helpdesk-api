@@ -1,5 +1,7 @@
 function errorMiddleware(err, req, res, next) {
-  console.error("[ERRO]:", err.stack);
+  if (!err.status) {
+    console.error("[ERRO]:", err.stack);
+  }
   const status = err.status || 500;
 
   res.status(status).json({
