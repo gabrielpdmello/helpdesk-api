@@ -19,7 +19,8 @@ API back-end de um sistema de HelpDesk.
 | GET    | /chamados         | Retorna todos os chamados.        |
 | GET    | /chamados/:id     | Retorna chamado por id.           |
 | POST   | /chamados         | Cria novo chamado.                |
-
+|PATCH | /chamados/:id   | Atualiza chamado. |
+|DELETE |   /chamados/:id   |           Exclui chamado. |
 ## Rodar API localmente
 1. Clone esse repositório e entre nele
 ```bash
