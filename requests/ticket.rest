@@ -42,3 +42,27 @@ Accept: application/json
 ### Buscar chamado com id inválido
 GET {{baseURL}}/chamados/nan
 Accept: application/json
+
+### Atualizar chamado
+PATCH {{baseURL}}/chamados/1
+Accept: application/json
+content-type: application/json
+
+{
+  "prioridade": "MEDIA",
+  "status": "CONCLUIDO",
+  "solucao": "Fonte deve ser substituída.",
+  "tecnicoId": 1
+}
+
+### Atualizar somente solução do chamado
+PATCH {{baseURL}}/chamados/1
+Accept: application/json
+content-type: application/json
+
+{
+  "solucao": "Fonte e placa mãe devem ser substituídos."
+}
+
+### Apagar chamado
+DELETE {{baseURL}}/chamados/1
