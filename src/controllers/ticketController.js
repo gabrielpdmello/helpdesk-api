@@ -2,7 +2,31 @@ const TicketService = require("../services/ticketService");
 
 class TicketController {
   static async getAll(req, res) {
-    const tickets = await TicketService.getAll();
+    let { status, prioridade } = req.query;
+    if (status) {
+      status = status.toUpperCase();
+
+      if (!["ABERTO", "EM_ATENDIMENTO", "CONCLUIDO"].includes(status)) {
+        return res.status(400).json({
+          message:
+            "Status pode ter um dos valores: 'ABERTO', 'EM_ATENDIMENTO', 'CONCLUIDO'",
+          status: req.query.status,
+          newStatus: status,
+        });
+      }
+    }
+    if (prioridade) {
+      prioridade = prioridade.toUpperCase();
+
+      if (!["BAIXA", "MEDIA", "ALTA"].includes(prioridade)) {
+        return res.status(400).json({
+          message:
+            "Prioridade pode ter um dos valores: 'BAIXA', 'MEDIA', 'ALTA'",
+        });
+      }
+    }
+
+    const tickets = await TicketService.getAll(status, prioridade);
     return res.status(200).json(tickets);
   }
 
@@ -121,7 +145,6 @@ class TicketController {
 
     await TicketService.delete(id);
     return res.status(200).json({ message: "Chamado deletado com sucesso." });
-    
   }
 }
 

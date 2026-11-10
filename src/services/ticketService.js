@@ -4,8 +4,8 @@ const CategoryModel = require("../models/categoryModel");
 const TechnicianModel = require("../models/technicianModel");
 
 class TicketService {
-  static async getAll() {
-    return await TicketModel.findAll();
+  static async getAll(status = null, prioridade = null) {
+    return await TicketModel.findAll(status, prioridade);
   }
 
   static async createTicket(

@@ -4,6 +4,26 @@
 GET {{baseURL}}/chamados
 Accept: application/json
 
+### Listar chamados por status ABERTO
+GET {{baseURL}}/chamados?status=ABERTO
+Accept: application/json
+
+### Listar chamados por status inválido
+GET {{baseURL}}/chamados?status=123
+Accept: application/json
+
+### Listar chamados por prioridade ALTA
+GET {{baseURL}}/chamados?prioridade=ALTA
+Accept: application/json
+
+### Listar chamados por prioridade inválido
+GET {{baseURL}}/chamados?prioridade=123
+Accept: application/json
+
+### Listar chamados por prioridade e status
+GET {{baseURL}}/chamados?prioridade=media&status=em_atendimento
+Accept: application/json
+
 ### Criar chamado
 POST {{baseURL}}/chamados
 Accept: application/json

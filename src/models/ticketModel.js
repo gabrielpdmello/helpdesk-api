@@ -1,8 +1,17 @@
 const db = require("../config/database");
 
 class TicketModel {
-  static async findAll() {
-    const [rows] = await db.query(`
+  static async findAll(status = null, prioridade = null) {
+    const queries = { status: status, prioridade: prioridade };
+    const entries = Object.entries(queries).filter(
+      ([_, value]) => value !== null,
+    );
+    const columns = entries.map(([key]) => `${key} = ?`).join(" AND ");
+    const values = entries.map(([_, value]) => value);
+
+    const whereClause = columns.length > 0 ? `WHERE ${columns}` : "";
+
+    const sql = `
       select 
       c.id, 
       c.titulo, 
@@ -19,8 +28,11 @@ class TicketModel {
       inner join solicitantes s on c.solicitante_id = s.id
       inner join categorias c2 on c.categoria_id = c2.id 
       left join tecnicos t on c.tecnico_id = t.id 
+      ${whereClause}
       order by c.id
-      `);
+    `;
+
+    const [rows] = await db.query(sql, values);
     return rows;
   }
 
@@ -111,6 +123,15 @@ class TicketModel {
       `DELETE FROM chamados
         WHERE id = ?`,
       [id],
+    );
+    return row;
+  }
+
+  static async getTicketCountPerStatus() {
+    const [row] = await db.query(
+      `SELECT status, count(status) as "total" FROM chamados
+      GROUP BY status;
+      `,
     );
     return row;
   }

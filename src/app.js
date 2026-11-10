@@ -3,6 +3,7 @@ const technicianRoutes = require('./routes/technicianRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const requesterRoutes = require('./routes/requesterRoutes');
 const ticketRoutes = require('./routes/ticketRoutes');
+const reportRoutes = require('./routes/reportRoutes');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const app = express();
 
@@ -12,6 +13,7 @@ app.use('/tecnicos', technicianRoutes);
 app.use('/categorias', categoryRoutes);
 app.use('/solicitantes', requesterRoutes);
 app.use('/chamados', ticketRoutes);
+app.use('/relatorios', reportRoutes);
 
 app.use(errorMiddleware);
 
