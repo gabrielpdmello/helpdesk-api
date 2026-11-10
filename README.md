@@ -5,7 +5,7 @@ API back-end de um sistema de HelpDesk.
 - As solicitações de suporte são registradas e acompanhadas desde sua abertura até a solução do problema. 
 - O sistema permite registrar informações sobre os solicitantes, organizar os chamados por categoria, identificar os técnicos responsáveis pelo atendimento e acompanhar informações como descrição do problema, prioridade, situação do chamado e solução apresentada.
 
-## Rotas atualmente implementadas
+## Rotas
 
 | Método | URI                             | Descrição                                                                                                                       |
 |--------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
