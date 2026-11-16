@@ -1,5 +1,5 @@
 @baseURL = http://localhost:3000
-@id = 4
+@id = 1
 
 ### Listar todos os solicitantes
 GET {{baseURL}}/solicitantes
@@ -72,6 +72,9 @@ content-type: application/json
 }
 
 ### Deletar solicitante 
+DELETE {{baseURL}}/solicitantes/5
+
+### Deletar solicitante referenciado em um chamado
 DELETE {{baseURL}}/solicitantes/{{id}}
 
 ### Deletar solicitante com id inválido
