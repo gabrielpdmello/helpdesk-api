@@ -11,7 +11,6 @@ class TicketController {
           message:
             "Status pode ter um dos valores: 'ABERTO', 'EM_ATENDIMENTO', 'CONCLUIDO'",
           status: req.query.status,
-          newStatus: status,
         });
       }
     }
@@ -22,6 +21,7 @@ class TicketController {
         return res.status(400).json({
           message:
             "Prioridade pode ter um dos valores: 'BAIXA', 'MEDIA', 'ALTA'",
+            prioridade: req.query.prioridade,
         });
       }
     }

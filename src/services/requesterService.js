@@ -34,7 +34,6 @@ class RequesterService {
   static async updateRequester(id, nome, email, setor) {
     try {
       const row = await RequesterModel.updateById(id, nome, email, setor);
-      console.log(row);
 
       if (!row) {
         const error = new Error("Solicitante não encontrado.");
